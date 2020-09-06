@@ -9,7 +9,7 @@ Button {
     id: actionButton
 
     text: "<font color='" + palette.text + "'>"
-          + (playMusic.playbackState === Audio.PlayingState ? "Pause" : "Play") + "</font>"
+          + (player.playbackState === Audio.PlayingState ? "Pause" : "Play") + "</font>"
     Layout.alignment: Qt.AlignCenter
 
     background: Rectangle {
@@ -36,9 +36,9 @@ Button {
     font.pointSize: 14
 
     onClicked: {
-        if (playMusic.playbackState == Audio.PlayingState)
-            playMusic.pause()
+        if (player.playbackState == Audio.PlayingState)
+            player.pause()
         else
-            playMusic.play()
+            player.play()
     }
 }

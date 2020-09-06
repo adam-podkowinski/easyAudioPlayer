@@ -18,3 +18,7 @@ function clickColor(color, change) {
 
     return endColor
 }
+
+function fileBasename(str) {
+    return (str.slice(str.lastIndexOf("/") + 1))
+}

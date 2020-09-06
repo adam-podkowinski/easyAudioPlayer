@@ -1,15 +1,16 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import "uiFunctions.js" as UiFunctions
 
 RowLayout {
     id: positionControl
-    property int minutes: Math.floor(playMusic.duration / 60000)
-    property int seconds: Math.floor(playMusic.duration / 1000 - minutes * 60)
+    property int minutes: Math.floor(player.duration / 60000)
+    property int seconds: Math.floor(player.duration / 1000 - minutes * 60)
 
-    property int currentMinutes: Math.floor(playMusic.position / 60000)
+    property int currentMinutes: Math.floor(player.position / 60000)
     property int currentSeconds: Math.floor(
-                                     playMusic.position / 1000 - currentMinutes * 60)
+                                     player.position / 1000 - currentMinutes * 60)
 
     property string minutesStr: this.minutes < 10 ? "0" + minutes.toString(
                                                         ) : minutes.toString()
@@ -22,6 +23,8 @@ RowLayout {
     property string currentSecondsStr: currentSeconds < 10 ? "0" + currentSeconds.toString(
                                                                  ) : currentSeconds.toString()
 
+    property bool isSliderEnabled: true
+
     Text {
         id: startText
         text: qsTr(positionRow.currentMinutesStr + ":" + positionRow.currentSecondsStr)
@@ -31,12 +34,15 @@ RowLayout {
     Slider {
         id: positionSlider
         from: 0
-        to: playMusic.duration
+        to: player.duration
         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         onMoved: {
-            playMusic.seek(positionSlider.value)
+            player.seek(value)
         }
-        value: playMusic.position
+
+        enabled: isSliderEnabled
+
+        value: player.position
 
         background: Rectangle {
             x: positionSlider.leftPadding
@@ -63,8 +69,11 @@ RowLayout {
             implicitWidth: 20
             implicitHeight: 20
             radius: 10
-            color: positionSlider.pressed ? "#f0f0f0" : "#f6f6f6"
-            border.color: "#bdbebf"
+            color: positionSlider.pressed ? palette.base : UiFunctions.clickColor(
+                                                palette.base, 10)
+            border.color: positionSlider.pressed ? UiFunctions.clickColor(
+                                                       palette.base,
+                                                       10) : palette.base
         }
     }
 
