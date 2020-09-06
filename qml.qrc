@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>PositionControl.qml</file>
+        <file>ActionButton.qml</file>
     </qresource>
 </RCC>

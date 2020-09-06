@@ -1,6 +1,5 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-import QtMultimedia 5.12
 import QtQuick.Layouts 1.12
 
 RowLayout {
@@ -36,6 +35,35 @@ RowLayout {
             playMusic.seek(positionSlider.value)
         }
         value: playMusic.position
+
+        background: Rectangle {
+            x: positionSlider.leftPadding
+            y: positionSlider.topPadding + positionSlider.availableHeight / 2 - height / 2
+            implicitWidth: 200
+            implicitHeight: 6
+            width: positionSlider.availableWidth
+            height: implicitHeight
+            radius: 3
+            color: "#fcdab7"
+
+            Rectangle {
+                width: positionSlider.visualPosition * parent.width
+                height: parent.height
+                color: "#1e5f74"
+                radius: 3
+            }
+        }
+
+        handle: Rectangle {
+            x: positionSlider.leftPadding + positionSlider.visualPosition
+               * (positionSlider.availableWidth - width)
+            y: positionSlider.topPadding + positionSlider.availableHeight / 2 - height / 2
+            implicitWidth: 20
+            implicitHeight: 20
+            radius: 10
+            color: positionSlider.pressed ? "#f0f0f0" : "#f6f6f6"
+            border.color: "#bdbebf"
+        }
     }
     Text {
         id: endText

@@ -1,5 +1,8 @@
 <RCC>
-    <qresource prefix="/new/sounds">
+    <qresource prefix="/sounds">
         <file>sound.mp3</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>sofiapro-light.otf</file>
     </qresource>
 </RCC>
