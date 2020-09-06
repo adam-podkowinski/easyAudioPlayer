@@ -9,10 +9,14 @@ ApplicationWindow {
     width: 400
     height: 500
     visible: true
-    color: "#1d2d50"
-    font.family: "qrc:/fonts/sofiapro-light.otf"
-    palette.text: "#fcdab7"
 
+    palette.window: "#202040"
+    palette.base: "#543864"
+    palette.alternateBase: "#ff6363"
+    palette.text: "#ffbd69"
+
+    color: palette.window
+    font.family: "qrc:/fonts/sofiapro-light.otf"
     Audio {
         id: playMusic
         audioRole: Audio.MusicRole

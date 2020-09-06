@@ -25,7 +25,9 @@ RowLayout {
     Text {
         id: startText
         text: qsTr(positionRow.currentMinutesStr + ":" + positionRow.currentSecondsStr)
+        color: palette.text
     }
+
     Slider {
         id: positionSlider
         from: 0
@@ -44,12 +46,12 @@ RowLayout {
             width: positionSlider.availableWidth
             height: implicitHeight
             radius: 3
-            color: "#fcdab7"
+            color: palette.text
 
             Rectangle {
                 width: positionSlider.visualPosition * parent.width
                 height: parent.height
-                color: "#1e5f74"
+                color: palette.alternateBase
                 radius: 3
             }
         }
@@ -65,8 +67,10 @@ RowLayout {
             border.color: "#bdbebf"
         }
     }
+
     Text {
         id: endText
         text: qsTr(positionRow.minutesStr + ":" + positionRow.secondsStr)
+        color: palette.text
     }
 }
